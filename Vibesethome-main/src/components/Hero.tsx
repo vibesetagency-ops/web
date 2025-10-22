@@ -1,6 +1,5 @@
 import { Button } from './ui/button';
 import { Sparkles } from 'lucide-react';
-// using public/hero.png (served as a static file by Vite/Vercel)
 
 
 export function Hero() {
@@ -79,14 +78,22 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative group">
-            <div className="relative rounded-2xl overflow-hidden">
-              // using public/hero.png (served as a static file by Vite/Vercel)
-              
-              {/* Gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-            </div>
+{/* Hero Image */}
+<div className="relative group">
+  <div className="relative rounded-2xl overflow-hidden">
+    <img
+      src="/hero.png"
+      alt="Cut Costs With an AI Agent - VibeSet connected ecosystem"
+      className="w-full h-auto aspect-square object-cover opacity-90 transition-opacity duration-300 group-hover:opacity-100 relative z-10"
+      width={560}
+      height={360}
+      fetchPriority="high"
+    />
+    {/* Gradient overlay on hover */}
+    <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+  </div>
+
+ 
             
             {/* Floating sparkles */}
             <div className="absolute -top-4 -right-4 animate-pulse">
