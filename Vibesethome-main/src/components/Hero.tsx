@@ -1,6 +1,7 @@
 import { Button } from './ui/button';
 import { Sparkles } from 'lucide-react';
-import heroImage from 'figma:asset/c17a842ba3b3ff07568bedb102511cb29d6adf7b.png';
+// using public/hero.png (served as a static file by Vite/Vercel)
+
 
 export function Hero() {
   const scrollToSection = (id: string) => {
