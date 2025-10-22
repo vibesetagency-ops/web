@@ -82,11 +82,7 @@ export function Hero() {
           {/* Hero Image */}
           <div className="relative group">
             <div className="relative rounded-2xl overflow-hidden">
-              <img
-                src={heroImage}
-                alt="Cut Costs With an AI Agent - VibeSet connected ecosystem"
-                className="w-full h-auto aspect-square object-cover opacity-90 transition-opacity duration-300 group-hover:opacity-100"
-              />
+              // using public/hero.png (served as a static file by Vite/Vercel)
               
               {/* Gradient overlay on hover */}
               <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
