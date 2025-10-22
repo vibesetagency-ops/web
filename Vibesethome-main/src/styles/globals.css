@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;500;600&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  /* VibeSet Design System Colors - Light Mode */
+  --canvas: #FFFFFF;
+  --surface: #F8FAFC;
+  --lines: #E2E8F0;
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --accent-primary: #FF2D95;
+  --accent-secondary: #7C4DFF;
+  
+  /* Default theme colors mapped to VibeSet system */
+  --background: var(--canvas);
+  --foreground: var(--text-primary);
+  --card: var(--surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--accent-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--lines);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--lines);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--accent-secondary);
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: var(--lines);
+  --input: transparent;
+  --input-background: var(--surface);
+  --switch-background: var(--lines);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: var(--accent-primary);
+  --chart-1: var(--accent-primary);
+  --chart-2: var(--accent-secondary);
+  --chart-3: #8B5CF6;
+  --chart-4: #10B981;
+  --chart-5: #F59E0B;
+  --radius: 0.5rem;
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--text-primary);
+  --sidebar-primary: var(--accent-primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--lines);
+  --sidebar-accent-foreground: var(--text-primary);
+  --sidebar-border: var(--lines);
+  --sidebar-ring: var(--accent-primary);
+}
+
+.dark {
+  /* VibeSet Dark Mode Colors */
+  --canvas: #0A0B0E;
+  --surface: #121319;
+  --lines: #1E293B;
+  --text-primary: #FFFFFF;
+  --text-secondary: #9BA0AA;
+  --accent-primary: #FF2D95;
+  --accent-secondary: #7C4DFF;
+  
+  /* Default theme colors mapped to VibeSet dark system */
+  --background: var(--canvas);
+  --foreground: var(--text-primary);
+  --card: var(--surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--accent-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--lines);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--lines);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--accent-secondary);
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: var(--lines);
+  --input: transparent;
+  --input-background: var(--surface);
+  --switch-background: var(--lines);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: var(--accent-primary);
+  --chart-1: var(--accent-primary);
+  --chart-2: var(--accent-secondary);
+  --chart-3: #A855F7;
+  --chart-4: #22C55E;
+  --chart-5: #F59E0B;
+  --radius: 0.5rem;
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--text-primary);
+  --sidebar-primary: var(--accent-primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--lines);
+  --sidebar-accent-foreground: var(--text-primary);
+  --sidebar-border: var(--lines);
+  --sidebar-ring: var(--accent-primary);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/**
+ * VibeSet Typography System
+ */
+@layer base {
+  html {
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: var(--canvas);
+    color: var(--text-primary);
+    line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Skip to content link for accessibility */
+  .skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--accent-primary);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+  
+  .skip-to-content:focus {
+    top: 6px;
+  }
+
+  /* Typography hierarchy */
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-family: 'Sora', 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem); /* 44-56px responsive */
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-family: 'Sora', 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 2rem; /* 32px */
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-family: 'Sora', 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 1.5rem; /* 24px */
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    h4 {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 1.125rem; /* 18px */
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: clamp(1rem, 2vw, 1.125rem); /* 16-18px responsive */
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+  }
+
+  /* Utility classes for gradients */
+  .gradient-primary {
+    background: linear-gradient(45deg, #FF2D95, #7C4DFF);
+  }
+
+  .gradient-text {
+    background: linear-gradient(45deg, #FF2D95, #7C4DFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* VibeSet specific utilities */
+  .card-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark .card-lift:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+}
