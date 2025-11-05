@@ -3,7 +3,7 @@ import { ArrowRight, Target, Users, Zap, Heart, Linkedin, Mail } from 'lucide-re
 import { Button } from '../components/ui/button';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Hero } from '../components/ui/hero';
-const aliPhoto = '/alipic.png;
+const aliPhoto = '/alipic.png';
 const shamsPhoto = '/shams.png';
 
 
