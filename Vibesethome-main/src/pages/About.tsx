@@ -3,8 +3,9 @@ import { ArrowRight, Target, Users, Zap, Heart, Linkedin, Mail } from 'lucide-re
 import { Button } from '../components/ui/button';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Hero } from '../components/ui/hero';
-import aliPhoto from 'Vibesethome-main/public/alipic.jpeg';
-import shamsPhoto from 'figma:asset/c9fc37697bd9a87634c53c2438e1f754d2ad83cc.png';
+const aliPhoto = '/alipic.jpeg';
+const shamsPhoto = '/shams.png';
+
 
 export function About() {
   const timeline = [
@@ -178,7 +179,7 @@ export function About() {
             <div className="order-3 md:order-4 lg:order-4">
               <div className="relative w-full aspect-[420/520] rounded-3xl overflow-hidden border border-[var(--lines)] bg-[var(--surface)]">
                 <ImageWithFallback
-                  src={aliPhoto}
+                  src= {aliPhoto}
                   alt="Portrait of Mohammad Ali Khan"
                   className="w-full h-full object-cover"
                 />
