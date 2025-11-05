@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from './ui/accordion';
 
-const faqs = [
+const defaultFaqs = [
   {
     question: "What's an 'agent'?",
     answer: "An AI agent is a smart software system that can perform tasks autonomously. Think of it as a digital assistant that can understand context, make decisions, and take actions across your business tools—like qualifying leads, processing invoices, or routing support tickets—without constant human oversight."
@@ -32,7 +32,11 @@ const faqs = [
   }
 ];
 
-export function FAQ() {
+interface FAQProps {
+  faqs?: Array<{ question: string; answer: string }>;
+}
+
+export function FAQ({ faqs = defaultFaqs }: FAQProps = {}) {
   return (
     <section id="faq" className="py-20 lg:py-28 bg-[var(--surface)]">
       <div className="max-w-4xl mx-auto px-6">

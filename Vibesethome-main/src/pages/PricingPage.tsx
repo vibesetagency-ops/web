@@ -1,15 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, Clock, Sparkles, Settings } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Pricing } from '../components/Pricing';
 import { FAQ } from '../components/FAQ';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../components/ui/select';
+
+const pricingFaqs = [
+  {
+    question: "What's included in each plan?",
+    answer: "Every plan includes core agents, prebuilt flows, approvals, and analytics. The main differences are monthly usage (minutes/tokens/emails), number of workflows, and seats. AI Receptionist minutes, Email Outreach sends, and Content Writer generations have included bundles per plan; you can add more as needed."
+  },
+  {
+    question: "How do usage and overages work?",
+    answer: "Usage covers things like telephony minutes, LLM tokens, and email sends. If you bring your own keys (BYO), usage bills to your accounts directly and we don't up-charge. If you choose Managed Keys, we meter usage and bill at cost + a small ops fee after you approve thresholds in settings."
+  },
+  {
+    question: "Do I need my own API keys and tools?",
+    answer: "Optional. BYO keys (OpenAI/Anthropic, Twilio, Retell/ElevenLabs, email provider) keeps costs predictable and data in your accounts. Or select Managed and we provision keys for you—ideal if you want one invoice."
+  },
+  {
+    question: "Can I change or cancel anytime?",
+    answer: "Yes. Plans are month-to-month by default. You can upgrade/downgrade instantly; unused time is pro-rated. Annual billing is available if you want a discount and a locked-in rate."
+  },
+  {
+    question: "What's the onboarding timeline & fee?",
+    answer: "Typical setup is 1–3 business days: connect tools, import contacts, verify domains, test flows. Self-serve is included; guided onboarding (mapping, deliverability checks, call flows) is an optional one-time add-on."
+  },
+  {
+    question: "How do you handle data privacy & storage?",
+    answer: "By default we don't store your content; logs are ephemeral and redacted. With BYO keys, data goes straight between your tools. Choose data region (CA/US) at setup. You control retention and deletion in Settings."
+  }
+];
 
 export function PricingPage() {
+  const [starterSolution, setStarterSolution] = useState('lead-generation');
+  const [proSolutions, setProSolutions] = useState<string[]>(['lead-generation']);
+
+  const solutions = [
+    { value: 'ai-receptionist', label: 'AI Voice Receptionist' },
+    { value: 'lead-generation', label: 'Lead Generation' },
+    { value: 'content-writing', label: 'Content Writing' },
+    { value: 'email-outreach', label: 'Email Outreach' },
+  ];
+
   const tiers = [
     {
       name: 'Starter',
-      price: '$199',
+      price: '$499',
       period: '/month',
       description: 'Perfect for small teams getting started with AI automation',
       features: [
@@ -25,7 +69,7 @@ export function PricingPage() {
     },
     {
       name: 'Pro',
-      price: '$399',
+      price: '$999',
       period: '/month',
       description: 'For growing teams ready to scale their automation',
       features: [
@@ -103,15 +147,32 @@ export function PricingPage() {
   return (
     <main id="main-content" className="pt-20">
       {/* Hero */}
-      <section className="py-24 bg-gradient-to-b from-[var(--canvas)] to-[var(--surface)]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="mb-6">Simple, Transparent Pricing</h1>
-          <p className="text-[var(--text-secondary)] max-w-2xl mx-auto mb-8">
+      <section className="relative py-12 md:py-20 bg-[var(--surface)]">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 text-center">
+          <div className="mb-4">
+            <h1 className="mb-0 leading-none text-[48px] sm:text-[72px] md:text-[96px]">
+              <span className="text-[var(--text-primary)]">Plans and </span>
+              <span style={{ color: 'var(--accent-primary)' }}>Pricing</span>
+            </h1>
+          </div>
+          <p className="text-[var(--text-secondary)] max-w-2xl mx-auto mb-12 md:mb-16 text-base md:text-lg px-4">
             Choose the perfect plan for your team. All plans include a 14-day free trial with no credit card required.
           </p>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--surface)] border border-[var(--lines)]">
-            <Check className="w-4 h-4 text-[var(--accent-primary)]" />
-            <span className="text-sm text-[var(--text-secondary)]">14-day free trial • No credit card required • Cancel anytime</span>
+          
+          {/* Feature highlights */}
+          <div className="flex flex-wrap justify-center gap-4 md:gap-12 lg:gap-20">
+            <div className="flex items-center gap-2">
+              <Check className="w-5 h-5" style={{ color: 'var(--accent-primary)' }} />
+              <span className="text-[var(--text-primary)] text-sm">14-day free trial</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-5 h-5" style={{ color: 'var(--accent-primary)' }} />
+              <span className="text-[var(--text-primary)] text-sm">No credit card</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-5 h-5" style={{ color: 'var(--accent-primary)' }} />
+              <span className="text-[var(--text-primary)] text-sm">Cancel anytime</span>
+            </div>
           </div>
         </div>
       </section>
@@ -142,6 +203,63 @@ export function PricingPage() {
                   </div>
                   <p className="text-[var(--text-secondary)] text-sm">{tier.description}</p>
                 </div>
+
+                {/* Solution Selector for Starter */}
+                {tier.name === 'Starter' && (
+                  <div className="mb-4">
+                    <label className="block text-sm mb-2 text-[var(--text-primary)]">
+                      Choose Your Solution:
+                    </label>
+                    <Select value={starterSolution} onValueChange={setStarterSolution}>
+                      <SelectTrigger className="w-full bg-[var(--canvas)] border-[var(--lines)]">
+                        <SelectValue placeholder="Select a solution" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {solutions.map((solution) => (
+                          <SelectItem key={solution.value} value={solution.value}>
+                            {solution.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
+
+                {/* Solution Selector for Pro */}
+                {tier.name === 'Pro' && (
+                  <div className="mb-4 space-y-2">
+                    <label className="block text-sm text-[var(--text-primary)]">
+                      Choose Up to 3 Solutions:
+                    </label>
+                    <div className="space-y-2">
+                      {[0, 1, 2].map((index) => (
+                        <Select
+                          key={index}
+                          value={proSolutions[index] || ''}
+                          onValueChange={(value) => {
+                            const newSolutions = [...proSolutions];
+                            newSolutions[index] = value;
+                            setProSolutions(newSolutions.filter(s => s));
+                          }}
+                        >
+                          <SelectTrigger className="w-full bg-[var(--canvas)] border-[var(--lines)]">
+                            <SelectValue placeholder={`Solution ${index + 1}${index === 0 ? ' (Required)' : ' (Optional)'}`} />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {solutions
+                              .filter(s => !proSolutions.includes(s.value) || proSolutions[index] === s.value)
+                              .map((solution) => (
+                                <SelectItem key={solution.value} value={solution.value}>
+                                  {solution.label}
+                                </SelectItem>
+                              ))}
+                          </SelectContent>
+                        </Select>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 <Link to="/contact">
                   <Button
                     className={`w-full mb-6 ${
@@ -168,83 +286,9 @@ export function PricingPage() {
         </div>
       </section>
 
-      {/* Feature Comparison */}
-      <section className="py-24 bg-[var(--surface)]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="mb-4">Compare Plans</h2>
-            <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
-              Detailed breakdown of features across all plans
-            </p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="border-b border-[var(--lines)]">
-                <tr>
-                  <th className="text-left p-4 text-[var(--text-secondary)]">Features</th>
-                  <th className="text-center p-4">Starter</th>
-                  <th className="text-center p-4">Pro</th>
-                  <th className="text-center p-4">Business</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonFeatures.map((category, categoryIndex) => (
-                  <React.Fragment key={category.category}>
-                    <tr className="border-t border-[var(--lines)]">
-                      <td colSpan={4} className="p-4 bg-[var(--canvas)]">
-                        <h4 className="text-sm">{category.category}</h4>
-                      </td>
-                    </tr>
-                    {category.features.map((feature, featureIndex) => (
-                      <tr key={`${category.category}-${feature.name}-${featureIndex}`} className="border-t border-[var(--lines)]">
-                        <td className="p-4 text-[var(--text-secondary)]">{feature.name}</td>
-                        <td className="p-4 text-center">
-                          {typeof feature.starter === 'boolean' ? (
-                            feature.starter ? (
-                              <Check className="w-5 h-5 text-[var(--accent-primary)] mx-auto" />
-                            ) : (
-                              <span className="text-[var(--text-secondary)]">—</span>
-                            )
-                          ) : (
-                            feature.starter
-                          )}
-                        </td>
-                        <td className="p-4 text-center">
-                          {typeof feature.pro === 'boolean' ? (
-                            feature.pro ? (
-                              <Check className="w-5 h-5 text-[var(--accent-primary)] mx-auto" />
-                            ) : (
-                              <span className="text-[var(--text-secondary)]">—</span>
-                            )
-                          ) : (
-                            feature.pro
-                          )}
-                        </td>
-                        <td className="p-4 text-center">
-                          {typeof feature.business === 'boolean' ? (
-                            feature.business ? (
-                              <Check className="w-5 h-5 text-[var(--accent-primary)] mx-auto" />
-                            ) : (
-                              <span className="text-[var(--text-secondary)]">—</span>
-                            )
-                          ) : (
-                            feature.business
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section className="py-24 bg-[var(--canvas)]">
-        <FAQ />
+        <FAQ faqs={pricingFaqs} />
       </section>
 
       {/* CTA */}

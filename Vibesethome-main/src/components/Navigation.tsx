@@ -29,10 +29,10 @@ export function Navigation() {
   }, [location]);
 
   const solutionItems = [
+    { label: 'AI Receptionist', path: '/solutions/ai-receptionist', isExternal: false },
     { label: 'Lead Generation', path: '/solutions/lead-generation', isExternal: false },
     { label: 'Content Writing', path: '/solutions/content-writing', isExternal: false },
     { label: 'Email Outreach', path: '/solutions/email-outreach', isExternal: false },
-    { label: 'AI Receptionist', path: 'https://taps-cart-35785877.figma.site/', isExternal: true },
   ];
 
   return (

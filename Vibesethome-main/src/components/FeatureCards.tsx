@@ -1,104 +1,82 @@
 import { Card, CardContent } from './ui/card';
-import { ArrowRight, MessageSquare, Users, BarChart3, DollarSign, Mail, Zap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { Button } from './ui/button';
 
-const features = [
+const automations = [
   {
-    icon: <MessageSquare className="w-6 h-6" />,
-    title: "Smart Support",
+    icon: "🔎",
+    title: "Lead Generation",
+    hook: "Fill your pipeline—without busywork",
     bullets: [
-      "Auto-route tickets by sentiment, urgency, product",
-      "Generate responses from your knowledge base"
-    ]
+      "Capture from forms, chat, and calls",
+      "Enrich + score leads, route instantly",
+      "Block duplicates & spam, log to CRM"
+    ],
+    cta: "See playbook →",
+    href: "/playbooks/lead-generation"
   },
   {
-    icon: <Users className="w-6 h-6" />,
-    title: "Sales Acceleration", 
+    icon: "✉️",
+    title: "Email Outreach",
+    hook: "1:1 at scale—without sounding robotic",
     bullets: [
-      "Lead scoring and auto-qualification",
-      "Personalized outreach at scale"
-    ]
+      "AI-personalized sequences + warm follow-ups",
+      "Best-time send, deliverability guardrails",
+      "Reply parsing: interested / not now / unsubscribe"
+    ],
+    cta: "See playbook →",
+    href: "/playbooks/email-outreach"
   },
   {
-    icon: <BarChart3 className="w-6 h-6" />,
-    title: "Data Insights",
+    icon: "📞",
+    title: "AI Receptionist",
+    hook: "Never miss a call or chat again",
     bullets: [
-      "Cross-platform analytics and reporting",
-      "Automated data cleanup and enrichment"
-    ]
+      "24/7 phone & web chat; books meetings",
+      "Qualifies, creates tickets, updates CRM",
+      "Live handoff + full transcript"
+    ],
+    cta: "See recipe →",
+    href: "/recipes/ai-receptionist"
   },
   {
-    icon: <DollarSign className="w-6 h-6" />,
-    title: "Finance Automation",
+    icon: "🤝",
+    title: "AI Sales Rep",
+    hook: "Qualify fast, advance deals faster",
     bullets: [
-      "Invoice processing and expense categorization",
-      "Payment reconciliation and reporting"
-    ]
+      "Discovery, objection handling, next-step nudges",
+      "Calendar, proposal, and payment links",
+      "Pipeline notes + alerts to Slack/Email"
+    ],
+    cta: "See flow →",
+    href: "/flows/ai-sales-rep"
   },
   {
-    icon: <Mail className="w-6 h-6" />,
-    title: "Marketing Operations",
+    icon: "📝",
+    title: "AI Content Writer",
+    hook: "On-brand content in minutes",
     bullets: [
-      "Content generation and social scheduling",
-      "Campaign optimization and A/B testing"
-    ]
+      "Posts, captions, blogs, ad variants",
+      "SEO briefs + repurpose long-form to shorts",
+      "Human approvals + brand guardrails"
+    ],
+    cta: "See templates →",
+    href: "/templates/content-writer"
   },
   {
-    icon: <Zap className="w-6 h-6" />,
-    title: "Process Optimization",
+    icon: "⚡",
+    title: "Marketing Automation",
+    hook: "From publish to performance",
     bullets: [
-      "Workflow analysis and bottleneck detection",
-      "Automated handoffs between systems"
-    ]
+      "Auto-schedule per channel, per audience",
+      "Always-on A/B tests; boost winners",
+      "Cross-channel analytics in one view"
+    ],
+    cta: "See dashboard →",
+    href: "/dashboards/marketing-automation"
   }
 ];
 
 export function FeatureCards() {
-  return (
-    <section id="features" className="py-24 bg-canvas">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="mb-4 text-[48px] font-bold">What VibeSet automates</h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">
-            From customer inquiries to financial reports, we automate the repetitive work 
-            that's eating up your team's time.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {features.map((feature, index) => (
-            <Card key={index} className="card-lift bg-surface border-lines hover:border-accent-primary/30 group">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg bg-gradient-primary text-white">
-                    {feature.icon}
-                  </div>
-                  <h3 className="font-semibold">{feature.title}</h3>
-                </div>
-                
-                <div className="space-y-2 mb-4">
-                  {feature.bullets.map((bullet, bulletIndex) => (
-                    <p key={bulletIndex} className="text-sm text-text-secondary leading-relaxed">
-                      • {bullet}
-                    </p>
-                  ))}
-                </div>
-
-                <button className="flex items-center gap-2 text-sm text-accent-primary hover:text-accent-secondary transition-colors group-hover:gap-3">
-                  See recipe
-                  <ArrowRight className="w-4 h-4 transition-transform" />
-                </button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <button className="text-accent-primary hover:text-accent-secondary font-medium inline-flex items-center gap-2 group">
-            View all automations
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </button>
-        </div>
-      </div>
-    </section>
-  );
+  return null;
 }

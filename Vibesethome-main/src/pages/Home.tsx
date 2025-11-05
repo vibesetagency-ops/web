@@ -1,4 +1,5 @@
 import { Hero } from '../components/Hero';
+import { HeroScrollDemo } from '../components/HeroScrollDemo';
 import { ProofBand } from '../components/ProofBand';
 import { FeatureCards } from '../components/FeatureCards';
 import { TimelineHowItWorks } from '../components/TimelineHowItWorks';
@@ -17,36 +18,36 @@ export function Home() {
   return (
     <main id="main-content">
       <Hero />
+      <HeroScrollDemo />
       <ProofBand />
       <FeatureCards />
-      <TimelineHowItWorks />
       
       {/* Mini Solutions Grid */}
-      <section className="py-24 bg-[var(--surface)]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="mb-4 text-[48px] font-bold">Powerful AI Agents for Every Need</h2>
-            <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
+      <section className="py-12 md:py-24 bg-[var(--surface)]">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="mb-4 text-[32px] md:text-[48px] font-bold px-4">Powerful AI Agents for Every Need</h2>
+            <p className="text-[var(--text-secondary)] max-w-2xl mx-auto px-4">
               Explore our specialized solutions designed to transform your business operations
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Link 
-              to="/solutions/lead-generation"
+              to="/solutions/ai-receptionist"
               className="group bg-[var(--canvas)] border border-[var(--lines)] rounded-xl p-8 hover:border-[var(--accent-primary)] transition-all duration-300 card-lift"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-white">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
                 </div>
                 <ArrowRight className="w-5 h-5 text-[var(--text-secondary)] group-hover:text-[var(--accent-primary)] group-hover:translate-x-1 transition-all" />
               </div>
-              <h3 className="mb-2">Lead Generation</h3>
+              <h3 className="mb-2">AI Voice Automation</h3>
               <p className="text-[var(--text-secondary)]">
-                Automate prospect discovery and qualification to fill your pipeline with high-quality leads
+                Handle calls with intelligent voice agents that sound natural and convert effectively
               </p>
             </Link>
 
@@ -87,20 +88,20 @@ export function Home() {
             </Link>
 
             <Link 
-              to="/solutions/ai-voice-automation"
+              to="/solutions/lead-generation"
               className="group bg-[var(--canvas)] border border-[var(--lines)] rounded-xl p-8 hover:border-[var(--accent-primary)] transition-all duration-300 card-lift"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-white">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
                 </div>
                 <ArrowRight className="w-5 h-5 text-[var(--text-secondary)] group-hover:text-[var(--accent-primary)] group-hover:translate-x-1 transition-all" />
               </div>
-              <h3 className="mb-2">AI Voice Automation</h3>
+              <h3 className="mb-2">Lead Generation</h3>
               <p className="text-[var(--text-secondary)]">
-                Handle calls with intelligent voice agents that sound natural and convert effectively
+                Automate prospect discovery and qualification to fill your pipeline with high-quality leads
               </p>
             </Link>
           </div>
@@ -116,12 +117,13 @@ export function Home() {
         </div>
       </section>
 
+      <TimelineHowItWorks />
+      <CalendlySection />
       <RecipesIntegrations />
       <Pricing />
       <Security />
       <TestimonialsCarousel />
       <FAQ />
-      <CalendlySection />
       <FinalCTA />
     </main>
   );
