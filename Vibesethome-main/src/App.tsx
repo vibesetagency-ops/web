@@ -5,8 +5,9 @@ import {
   Navigate,
 } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeProvider";
-import { Navigation } from "./components/Navigation";
+import { AnimatedNavBar } from "./components/AnimatedNavBar";
 import { Footer } from "./components/Footer";
+import { FloatingConsultationButton } from "./components/FloatingConsultationButton";
 
 // Pages
 import { Home } from "./pages/Home";
@@ -15,6 +16,7 @@ import { LeadGeneration } from "./pages/LeadGeneration";
 import { ContentWriting } from "./pages/ContentWriting";
 import { EmailOutreach } from "./pages/EmailOutreach";
 import { AIVoiceAutomation } from "./pages/AIVoiceAutomation";
+import { AIReceptionist } from "./pages/AIReceptionist";
 import { PricingPage } from "./pages/PricingPage";
 import { CaseStudies } from "./pages/CaseStudies";
 import { About } from "./pages/About";
@@ -31,7 +33,7 @@ export default function App() {
     >
       <Router>
         <div className="min-h-screen">
-          <Navigation />
+          <AnimatedNavBar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/solutions" element={<Solutions />} />
@@ -51,6 +53,10 @@ export default function App() {
               path="/solutions/ai-voice-automation"
               element={<AIVoiceAutomation />}
             />
+            <Route
+              path="/solutions/ai-receptionist"
+              element={<AIReceptionist />}
+            />
             <Route path="/pricing" element={<PricingPage />} />
             <Route
               path="/case-studies"
@@ -68,6 +74,7 @@ export default function App() {
             />
           </Routes>
           <Footer />
+          <FloatingConsultationButton />
         </div>
       </Router>
     </ThemeProvider>

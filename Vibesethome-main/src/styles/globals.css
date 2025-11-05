@@ -11,8 +11,8 @@
   --lines: #E2E8F0;
   --text-primary: #0F172A;
   --text-secondary: #64748B;
-  --accent-primary: #FF2D95;
-  --accent-secondary: #7C4DFF;
+  --accent-primary: #34447f;
+  --accent-secondary: #d2c49c;
   
   /* Default theme colors mapped to VibeSet system */
   --background: var(--canvas);
@@ -61,8 +61,8 @@
   --lines: #1E293B;
   --text-primary: #FFFFFF;
   --text-secondary: #9BA0AA;
-  --accent-primary: #FF2D95;
-  --accent-secondary: #7C4DFF;
+  --accent-primary: #d2c49c;
+  --accent-secondary: #34447f;
   
   /* Default theme colors mapped to VibeSet dark system */
   --background: var(--canvas);
@@ -102,6 +102,17 @@
   --sidebar-accent-foreground: var(--text-primary);
   --sidebar-border: var(--lines);
   --sidebar-ring: var(--accent-primary);
+  
+  /* Hover Button Colors - Dark Mode */
+  --hover-button-bg: rgba(52, 68, 127, 0.2);
+  --hover-button-border: rgba(210, 196, 156, 0.3);
+  --hover-button-glow-1: rgba(210, 196, 156, 0.15);
+  --hover-button-glow-2: rgba(210, 196, 156, 0.2);
+  --hover-button-shadow-1: rgba(0, 0, 0, 0.5);
+  --hover-button-shadow-2: rgba(0, 0, 0, 0.45);
+  --hover-button-text: #FFFFFF;
+  --hover-circle-from: #d2c49c;
+  --hover-circle-to: #9b8a6a;
 }
 
 @theme inline {
@@ -143,6 +154,25 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Hover Button Colors - Light Mode */
+  --hover-button-bg: rgba(210, 196, 156, 0.15);
+  --hover-button-border: rgba(52, 68, 127, 0.25);
+  --hover-button-glow-1: rgba(52, 68, 127, 0.12);
+  --hover-button-glow-2: rgba(52, 68, 127, 0.18);
+  --hover-button-shadow-1: rgba(0, 0, 0, 0.08);
+  --hover-button-shadow-2: rgba(0, 0, 0, 0.12);
+  --hover-button-text: #0F172A;
+  --hover-circle-from: #7896d4;
+  --hover-circle-to: #34447f;
+  
+  /* AI Receptionist custom colors */
+  --color-ai-purple: #8b5cf6;
+  --color-ai-purple-hover: #7c3aed;
+  --color-ai-purple-light: #a78bfa;
+  --color-ai-cyan: #06b6d4;
+  --color-ai-cyan-dark: #0891b2;
+  --color-ai-green: #10b981;
 }
 
 @layer base {
@@ -163,6 +193,7 @@
     font-size: var(--font-size);
     scroll-behavior: smooth;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
   }
 
   body {
@@ -170,6 +201,9 @@
     color: var(--text-primary);
     line-height: 1.5;
     transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Skip to content link for accessibility */
@@ -247,13 +281,20 @@
     }
   }
 
-  /* Utility classes for gradients */
+  /* Utility classes for solid colors (gradients removed) */
   .gradient-primary {
-    background: linear-gradient(45deg, #FF2D95, #7C4DFF);
+    background: var(--accent-primary);
   }
 
   .gradient-text {
-    background: linear-gradient(45deg, #FF2D95, #7C4DFF);
+    background: linear-gradient(135deg, #34447f 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .dark .gradient-text {
+    background: linear-gradient(135deg, #d2c49c 0%, #94a3b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -292,5 +333,129 @@
   *:focus-visible {
     outline: 2px solid var(--accent-primary);
     outline-offset: 2px;
+  }
+
+  /* Spotlight animation */
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -40%) scale(1);
+    }
+  }
+
+  .animate-spotlight {
+    animation: spotlight 2s ease 0.75s 1 forwards;
+  }
+
+  /* Loader animation for Spline fallback */
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--lines);
+    border-bottom-color: var(--accent-primary);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Blob animation for hero backgrounds */
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    /* Prevent horizontal scroll on mobile */
+    * {
+      max-width: 100%;
+    }
+    
+    /* Better touch targets */
+    button,
+    a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Optimize font sizes for mobile */
+    h1 {
+      font-size: clamp(2rem, 8vw, 3rem) !important;
+    }
+    
+    h2 {
+      font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    }
+    
+    h3 {
+      font-size: clamp(1.25rem, 5vw, 1.5rem) !important;
+    }
+    
+    /* Better mobile padding */
+    section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Improve mobile input fields */
+    input,
+    textarea,
+    select {
+      font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+  }
+
+  /* Extra small devices */
+  @media (max-width: 375px) {
+    :root {
+      --font-size: 14px;
+    }
+    
+    h1 {
+      font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
+    }
+  }
+
+  /* Landscape mobile optimization */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .min-h-screen {
+      min-height: auto;
+    }
   }
 }

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
-import { Copy, Eye, Filter } from 'lucide-react';
+import { Copy, Eye, Filter, Sheet, Mail, MessageSquare, Database, FileText, ShoppingBag, CreditCard, BookOpen, Headphones, BarChart3, Table, CheckSquare, Trello as TrelloIcon, Users, Calendar as CalendarIcon, Cloud, Send, Share2, FileSignature, Video, Figma as FigmaIcon, Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { IntegrationItem } from './IntegrationItem';
 
 const recipeCategories = ['All', 'CRM', 'Helpdesk', 'Payments', 'Docs', 'Social', 'Data'];
 
@@ -46,10 +47,32 @@ const recipes = [
 ];
 
 const integrations = [
-  'Google Sheets', 'Gmail', 'Slack', 'HubSpot', 'Notion', 'Shopify',
-  'Stripe', 'QuickBooks', 'Zendesk', 'Google Analytics', 'Airtable', 
-  'ClickUp', 'Trello', 'Teams', 'Monday.com', 'Salesforce', 'Mailchimp',
-  'Buffer', 'DocuSign', 'Calendly', 'Zoom', 'Figma'
+  { name: 'Google Sheets', icon: Sheet },
+  { name: 'Gmail', icon: Mail },
+  { name: 'Slack', icon: MessageSquare },
+  { name: 'HubSpot', icon: Database },
+  { name: 'Notion', icon: FileText },
+  { name: 'Shopify', icon: ShoppingBag },
+  { name: 'Stripe', icon: CreditCard },
+  { name: 'QuickBooks', icon: BookOpen },
+  { name: 'Zendesk', icon: Headphones },
+  { name: 'Google Analytics', icon: BarChart3 },
+  { name: 'Airtable', icon: Table },
+  { name: 'ClickUp', icon: CheckSquare },
+  { name: 'Trello', icon: TrelloIcon },
+  { name: 'Teams', icon: Users },
+  { name: 'Monday.com', icon: CalendarIcon },
+  { name: 'Salesforce', icon: Cloud },
+  { name: 'Mailchimp', icon: Send },
+  { name: 'Buffer', icon: Share2 },
+  { name: 'DocuSign', icon: FileSignature },
+  { name: 'Calendly', icon: CalendarIcon },
+  { name: 'Zoom', icon: Video },
+  { name: 'Meta Ads', icon: Facebook },
+  { name: 'Instagram', icon: Instagram },
+  { name: 'X (Twitter)', icon: Twitter },
+  { name: 'LinkedIn', icon: Linkedin },
+  { name: 'YouTube', icon: Youtube }
 ];
 
 export function RecipesIntegrations() {
@@ -64,10 +87,6 @@ export function RecipesIntegrations() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="mb-4 text-[48px] font-bold">Automation recipes & integrations</h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">
-            Pre-built automations you can copy and customize, plus 1000+ integrations 
-            through our n8n platform.
-          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -97,7 +116,7 @@ export function RecipesIntegrations() {
             </div>
 
             {/* Recipe cards */}
-            <div className="space-y-4 max-h-96 overflow-y-auto">
+            <div className="space-y-4 max-h-[600px] overflow-y-auto">
               {filteredRecipes.map((recipe, index) => (
                 <Card key={index} className="card-lift bg-canvas border-lines">
                   <CardContent className="p-4">
@@ -146,25 +165,20 @@ export function RecipesIntegrations() {
           <div>
             <h3 className="text-xl font-semibold mb-6">Integrations</h3>
             
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               {integrations.map((integration, index) => (
-                <div 
+                <IntegrationItem
                   key={index}
-                  className="flex items-center justify-center p-4 bg-canvas border border-lines rounded-lg hover:border-accent-primary/30 transition-colors"
-                >
-                  <span className="text-sm text-text-secondary font-medium text-center">
-                    {integration}
-                  </span>
-                </div>
+                  icon={integration.icon}
+                  name={integration.name}
+                  style="mono"
+                />
               ))}
             </div>
 
             <div className="text-center p-6 bg-gradient-primary/5 border border-accent-primary/20 rounded-lg">
-              <p className="text-text-secondary mb-4">
-                If n8n connects to it, we can automate it.
-              </p>
-              <p className="text-sm text-text-secondary">
-                <strong>1000+</strong> integrations available through our n8n platform
+              <p className="text-sm text-text-secondary text-[20px]">
+                <strong>1000+</strong> integrations available through our platform
               </p>
             </div>
           </div>

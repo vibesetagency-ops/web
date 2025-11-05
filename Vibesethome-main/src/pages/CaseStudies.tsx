@@ -108,19 +108,40 @@ export function CaseStudies() {
   return (
     <main id="main-content" className="pt-20">
       {/* Hero */}
-      <section className="py-24 bg-gradient-to-b from-[var(--canvas)] to-[var(--surface)]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--surface)] border border-[var(--lines)] mb-6">
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" />
-            <span className="text-sm text-[var(--text-secondary)]">Real Results from Real Customers</span>
+      <section className="relative py-12 md:py-20 bg-[var(--surface)]">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 text-center">
+          <div className="mb-4">
+            <h1 className="mb-0 leading-none text-[48px] sm:text-[72px] md:text-[96px]">
+              <span className="text-[var(--text-primary)]">Success </span>
+              <span style={{ color: 'var(--accent-primary)' }}>Stories</span>
+            </h1>
           </div>
-          <h1 className="mb-6">Success Stories</h1>
-          <p className="text-[var(--text-secondary)] max-w-2xl mx-auto mb-12">
-            See how leading companies use VibeSet AI to transform their workflows and achieve exceptional results
+          <p className="text-[var(--text-secondary)] max-w-2xl mx-auto mb-12 md:mb-16 text-base md:text-lg px-4">
+            See how leading companies use VibeSet AI to transform their workflows and achieve exceptional results.
           </p>
           
-          {/* Filters */}
-          <div className="flex flex-wrap gap-3 justify-center mb-8">
+          {/* Feature highlights */}
+          <div className="flex flex-wrap justify-center gap-4 md:gap-12 lg:gap-20">
+            <div className="flex items-center gap-2">
+              <TrendingUp className="w-5 h-5" style={{ color: 'var(--accent-primary)' }} />
+              <span className="text-[var(--text-primary)] text-sm">385% Avg. ROI</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Users className="w-5 h-5" style={{ color: 'var(--accent-primary)' }} />
+              <span className="text-[var(--text-primary)] text-sm">10,000+ Teams</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Zap className="w-5 h-5" style={{ color: 'var(--accent-primary)' }} />
+              <span className="text-[var(--text-primary)] text-sm">98% Satisfaction</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Filters Section */}
+      <section className="py-6 md:py-8 bg-[var(--canvas)]">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
             {industries.map((industry) => (
               <button
                 key={industry}
@@ -134,7 +155,7 @@ export function CaseStudies() {
       </section>
 
       {/* Case Studies Grid */}
-      <section className="py-24 bg-[var(--canvas)]">
+      <section className="py-16 bg-[var(--canvas)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {caseStudies.map((study, index) => (

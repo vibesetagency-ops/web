@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Target, Users, Zap, Heart } from 'lucide-react';
+import { ArrowRight, Target, Users, Zap, Heart, Linkedin, Mail } from 'lucide-react';
 import { Button } from '../components/ui/button';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { Hero } from '../components/ui/hero';
+const aliPhoto = '/alipic.jpeg';
+const shamsPhoto = '/shams.png';
+
 
 export function About() {
   const timeline = [
@@ -61,20 +66,131 @@ export function About() {
   return (
     <main id="main-content" className="pt-20">
       {/* Hero */}
-      <section className="py-24 bg-gradient-to-b from-[var(--canvas)] to-[var(--surface)]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
+      <Hero
+        title={
+          <>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--surface)] border border-[var(--lines)] mb-6">
               <div className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" />
               <span className="text-sm text-[var(--text-secondary)]">About VibeSet</span>
             </div>
-            <h1 className="mb-6">Making AI Work for Everyone</h1>
-            <p className="text-[var(--text-secondary)]">
-              We're on a mission to democratize AI automation, helping teams of all sizes achieve more with intelligent agents that handle the repetitive work, so humans can focus on what matters most.
+            <div className="mb-6">About Us</div>
+          </>
+        }
+        subtitle="We're on a mission to democratize AI automation, helping teams of all sizes achieve more with intelligent agents that handle the repetitive work, so humans can focus on what matters most."
+        subtitleClassName="max-w-3xl"
+        className="min-h-0 py-12 pb-8 mb-0 text-[64px] font-bold"
+      />
+
+      {/* Founders */}
+      <section className="py-12 md:py-16 bg-[var(--canvas)]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="mb-4 text-[64px] font-bold">Meet the Founders</h2>
+            <p className="text-[var(--text-secondary)] max-w-2xl mx-auto text-[15px] font-bold">
+              Two builders, one mission: automate the busywork so teams can scale the work that wins.
             </p>
+          </div>
+
+          {/* Mirrored Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.3fr_0.85fr_0.85fr_1.3fr] gap-6">
+            {/* Column 1: Shams Photo (Desktop Left) */}
+            <div className="order-1 md:order-1 lg:order-1">
+              <div className="relative w-full aspect-[420/520] rounded-3xl overflow-hidden border border-[var(--lines)] bg-[var(--surface)]">
+                <ImageWithFallback
+                  src={shamsPhoto}
+                  alt="Portrait of Shams Khan"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Column 2: Shams Bio (Center Left) */}
+            <div className="order-2 md:order-2 lg:order-2">
+              <div className="h-full bg-[var(--surface)] border border-[var(--lines)] rounded-2xl p-6 flex flex-col gap-3">
+                <div>
+                  <h4 className="mb-1 text-center">Shams Khan</h4>
+                  <p className="text-sm text-[rgb(210,196,156)] text-center">Co-Founder </p>
+                </div>
+                
+                <p className="text-[var(--text-primary)] text-center">
+                  CompSci; agentic systems & voice AI; builds and scales n8n pipelines.
+                </p>
+                
+
+
+                <div className="flex gap-3 mt-auto pt-3 border-t border-[var(--lines)]">
+                  <a 
+                    href="https://www.linkedin.com/in/shamscasm/?originalSubdomain=ca" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
+                    aria-label="Shams Khan LinkedIn"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a 
+                    href="mailto:vibesetagency@gmail.com" 
+                    className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
+                    aria-label="Email Shams Khan"
+                  >
+                    <Mail className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 3: Ali Bio (Center Right) */}
+            <div className="order-4 md:order-3 lg:order-3">
+              <div className="h-full bg-[var(--surface)] border border-[var(--lines)] rounded-2xl p-6 flex flex-col gap-3">
+                <div>
+                  <h4 className="mb-1 text-center">Mohammad Ali Khan</h4>
+                  <p className="text-sm text-[rgb(210,196,156)] text-center">Co-Founder </p>
+                </div>
+                
+                <p className="text-[var(--text-primary)] text-center">
+                  Economics Graduate; go-to-market, pricing, and client onboarding.
+                </p>
+                
+
+
+                <div className="flex gap-3 mt-auto pt-3 border-t border-[var(--lines)]">
+                  <a 
+                    href="https://www.linkedin.com/in/mohammadali-197219812003s" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
+                    aria-label="Mohammad Ali Khan LinkedIn"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a 
+                    href="mailto:info@vibeset.ca" 
+                    className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
+                    aria-label="Email Mohammad Ali Khan"
+                  >
+                    <Mail className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 4: Ali Photo (Desktop Right) */}
+            <div className="order-3 md:order-4 lg:order-4">
+              <div className="relative w-full aspect-[420/520] rounded-3xl overflow-hidden border border-[var(--lines)] bg-[var(--surface)]">
+                <ImageWithFallback
+                  src= {aliPhoto}
+                  alt="Portrait of Mohammad Ali Khan"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Team */}
+
 
       {/* Mission */}
       <section className="py-24 bg-[var(--canvas)]">
@@ -174,31 +290,6 @@ export function About() {
                   <h4 className="mb-2">{item.event}</h4>
                   <p className="text-[var(--text-secondary)]">{item.description}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-24 bg-[var(--surface)]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="mb-4">Meet the Team</h2>
-            <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
-              The people behind VibeSet
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="bg-[var(--canvas)] border border-[var(--lines)] rounded-xl p-6 text-center">
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] mx-auto mb-4 flex items-center justify-center text-white text-2xl">
-                  {member.name.split(' ').map(n => n[0]).join('')}
-                </div>
-                <h4 className="mb-1">{member.name}</h4>
-                <p className="text-sm text-[var(--accent-primary)] mb-3">{member.role}</p>
-                <p className="text-sm text-[var(--text-secondary)]">{member.bio}</p>
               </div>
             ))}
           </div>
